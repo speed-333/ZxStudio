@@ -1,0 +1,299 @@
+{
+  "slug": "zxcrates",
+  "name": "ZxCrates",
+  "version": "1.0.0",
+  "status": "stable",
+  "category": "Gameplay",
+  "icon": "Zx",
+  "accent": "red",
+  "downloads": 0,
+  "tags": [
+    "Paper",
+    "Folia",
+    "PlaceholderAPI",
+    "MySQL",
+    "HikariCP",
+    "GUI",
+    "Animations"
+  ],
+  "description": {
+    "en": "Secure configurable crate system for Paper/Folia with Random & Select crates, animations, rewards, keys, holograms, KeyAll and PlaceholderAPI.",
+    "ar": "نظام Crates آمن وقابل للتخصيص لـ Paper/Folia مع Random وSelect وAnimations والجوائز والمفاتيح والهولوجرام وKeyAll وPlaceholderAPI."
+  },
+  "createdAt": "2026-08-24T00:00:00.000Z",
+  "updatedAt": "2026-08-24T01:50:00.000Z",
+  "wiki": [
+    {
+      "id": "overview",
+      "title": {
+        "en": "Overview",
+        "ar": "المقدمة"
+      },
+      "body": {
+        "en": "A quick guide to core capabilities.\n\nZxCrates is a configurable crate system for Paper/Folia servers.\n\n## Core features\n- Random and Select crate types.\n- 11 animation types: Galaxy plus ten motion-heavy variants.\n- Per-player keys with `item` or `cloud` delivery.\n- Reward GUI/editor with automatic saving.\n- Dynamic TextDisplay holograms with PlaceholderAPI and hex/legacy colors.\n- KeyAll scheduling and immediate online-player distribution.\n- FlatFile or MySQL persistence with HikariCP.\n- Folia support and asynchronous I/O separated from player/world operations.\n- Safety limits for commands, lore and serialized ItemStacks.\n",
+        "ar": "شرح سريع لأهم قدرات البلوقن الأساسية.\n\nZxCrates هو نظام Crates قابل للتخصيص لسيرفرات Paper/Folia.\n\n## المميزات الأساسية\n- نوعا Crate: `Random` و`Select`.\n- 11 نوع Animation: Galaxy بالإضافة إلى عشرة أنماط حركية.\n- مفاتيح لكل لاعب مع تسليم `item` أو `cloud`.\n- محرر/GUI للجوائز مع حفظ تلقائي.\n- Holograms ديناميكية من نوع TextDisplay مع PlaceholderAPI ودعم ألوان Hex وLegacy.\n- KeyAll مجدول وتوزيع فوري على اللاعبين الموجودين.\n- تخزين FlatFile أو MySQL مع HikariCP.\n- دعم Folia وفصل عمليات I/O غير المتزامنة عن عمليات اللاعب والعالم.\n- حدود أمان للأوامر والـLore وتمثيل ItemStack.\n"
+      },
+      "group": {
+        "en": "Getting Started",
+        "ar": "البداية"
+      },
+      "order": 0
+    },
+    {
+      "id": "installation",
+      "title": {
+        "en": "Installation",
+        "ar": "التثبيت"
+      },
+      "body": {
+        "en": "Clear steps for installing the plugin.\n\n1. Put the plugin JAR in the server's `plugins/` directory.\n2. Restart the server.\n3. ZxCrates creates its configuration resources and starts the selected repository.\n4. If PlaceholderAPI is present and `placeholders.enabled: true`, the expansion is registered automatically.\n\n## Runtime files\n- `config.yml` — main settings.\n- `keyall.yml` — KeyAll definitions.\n- `placeholder.yml` — placeholder reference.\n- Plugin message resources.\n- Per-crate YAML files when using `flatfile` storage.\n\n## Requirements\nUse a Java runtime and Minecraft server platform supported by the plugin build you are installing.\n",
+        "ar": "خطوات واضحة لتثبيت البلوقن بسهولة.\n\n1. ضع ملف JAR الخاص بالبلوقن داخل مجلد `plugins/`.\n2. أعد تشغيل السيرفر.\n3. سيقوم ZxCrates بإنشاء ملفات الإعداد وتشغيل Repository التخزين المختار.\n4. إذا كان PlaceholderAPI موجودًا وكان `placeholders.enabled: true` فسيتم تسجيل الـExpansion تلقائيًا.\n\n## ملفات التشغيل\n- `config.yml` — الإعدادات الرئيسية.\n- `keyall.yml` — تعريفات KeyAll.\n- `placeholder.yml` — مرجع الـPlaceholders.\n- ملفات الرسائل التي يوفرها البلوقن.\n- ملفات YAML الخاصة بكل Crate عند استخدام التخزين `flatfile`.\n\n## المتطلبات\nيحتاج البلوقن إلى بيئة Java مناسبة لإصدار السيرفر الذي يعمل عليه، مع منصة Minecraft مدعومة من البلوقن.\n"
+      },
+      "group": {
+        "en": "Getting Started",
+        "ar": "البداية"
+      },
+      "order": 1
+    },
+    {
+      "id": "compatibility",
+      "title": {
+        "en": "Compatibility",
+        "ar": "التوافق"
+      },
+      "body": {
+        "en": "Lists the currently supported environments and versions.\n\n- **Java:** 21 at build level.\n- **Server API:** Paper API `1.21.11-R0.1-SNAPSHOT` in `pom.xml`.\n- **Minecraft API declaration:** `api-version: '1.20'`.\n- **Folia:** explicitly declared with `folia-supported: true`.\n- **PlaceholderAPI:** optional/soft dependency (`2.11.6` in Maven).\n- **Database:** MySQL Connector/J `9.4.0`.\n- **Connection pool:** HikariCP `6.3.0`.\n- **Serialization helper:** Gson `2.13.1`.\n\nThe plugin separates player/world scheduling through its task helpers and keeps database/FlatFile work on its own I/O executor.",
+        "ar": "يوضح الإصدارات والبيئات المدعومة حاليًا.\n\n- **Java:** الإصدار 21 على مستوى البناء.\n- **Server API:** Paper API `1.21.11-R0.1-SNAPSHOT` داخل `pom.xml`.\n- **Minecraft API declaration:** `api-version: '1.20'`.\n- **Folia:** معلن صراحةً عبر `folia-supported: true`.\n- **PlaceholderAPI:** اعتماد اختياري/Soft Dependency (`2.11.6` في Maven).\n- **قاعدة البيانات:** MySQL Connector/J `9.4.0`.\n- **Connection Pool:** HikariCP `6.3.0`.\n- **Serialization:** Gson `2.13.1`.\n\nالبلوقن يفصل جدولة اللاعب/العالم عبر Task helpers ويضع عمليات قاعدة البيانات وFlatFile على I/O executor مستقل."
+      },
+      "group": {
+        "en": "Getting Started",
+        "ar": "البداية"
+      },
+      "order": 2
+    },
+    {
+      "id": "commands",
+      "title": {
+        "en": "Commands",
+        "ar": "الأوامر"
+      },
+      "body": {
+        "en": "A quick reference for available commands.\n\nThe command is registered as `/crates` with alias `/crate`, and `/zxcrates` with alias `/zxc`.\n\n| Command | Purpose | Permission |\n|---|---|---|\n| `/crates` | Open the editor list (player) | `ZxCrates.edit` |\n| `/crate editor <id>` | Open a specific crate editor | `ZxCrates.edit` |\n| `/zxcrates create <id>` | Create a crate; ID `[a-z0-9_-]{1,32}` | `ZxCrates.create` |\n| `/zxcrates delete <id>` | Delete a crate | `ZxCrates.delete` |\n| `/crate preview <crate>` | Open the crate preview | `ZxCrates.open` |\n| `/crate givecrate <crate>` | Give the player the crate item | `ZxCrates.givecrate` |\n| `/zxcrates givekey <player> <crate> [amount]` | Give 1..1,000,000 keys | `ZxCrates.givekey` |\n| `/zxcrates bind <id>` | Arm a right-click bind request | `ZxCrates.edit` |\n| `/zxcrates reload` | Reload config, crate files and keyall.yml | `ZxCrates.reload` |\n| `/zxcrates keyall <id>` | Run a KeyAll ID or distribute a crate key immediately | `ZxCrates.keyall` logic |\n| `/crate hologram <id> background <default\\|transparent>` | Set TextDisplay background | `ZxCrates.edit` |\n| `/crate hologram <id> view_distance <id> <0..128>` | Set per-crate hologram range | `crate.view_distance.set` or `crates.view_distance.set` |\n| `/zxcrates info <id>` | Show type and reward count | `ZxCrates.info` |\n\n`ZxCrates.admin` bypasses individual permission checks. `givekey` requires an online player and validates the amount.",
+        "ar": "مرجع سريع للأوامر والصلاحيات المطلوبة.\n\nيتم تسجيل الأمر `/crates` مع alias هو `/crate`، والأمر `/zxcrates` مع alias هو `/zxc`.\n\n| الأمر | الوظيفة | الصلاحية |\n|---|---|---|\n| `/crates` | فتح قائمة المحرر للاعب | `ZxCrates.edit` |\n| `/crate editor <id>` | فتح محرر Crate محدد | `ZxCrates.edit` |\n| `/zxcrates create <id>` | إنشاء Crate؛ الصيغة `[a-z0-9_-]{1,32}` | `ZxCrates.create` |\n| `/zxcrates delete <id>` | حذف Crate | `ZxCrates.delete` |\n| `/crate preview <crate>` | فتح المعاينة | `ZxCrates.open` |\n| `/crate givecrate <crate>` | إعطاء عنصر الـCrate للاعب | `ZxCrates.givecrate` |\n| `/zxcrates givekey <player> <crate> [amount]` | إعطاء من 1 إلى 1,000,000 مفتاح | `ZxCrates.givekey` |\n| `/zxcrates bind <id>` | تجهيز ربط Crate عبر Right Click | `ZxCrates.edit` |\n| `/zxcrates reload` | إعادة تحميل config وملفات Crates وkeyall.yml | `ZxCrates.reload` |\n| `/zxcrates keyall <id>` | تشغيل KeyAll أو توزيع مفتاح Crate فورًا | حسب منطق `ZxCrates.keyall` |\n| `/crate hologram <id> background <default\\|transparent>` | تعديل خلفية TextDisplay | `ZxCrates.edit` |\n| `/crate hologram <id> view_distance <id> <0..128>` | تعديل مدى ظهور Hologram لكل Crate | `crate.view_distance.set` أو `crates.view_distance.set` |\n| `/zxcrates info <id>` | عرض نوع الـCrate وعدد الجوائز | `ZxCrates.info` |\n\nالصلاحية `ZxCrates.admin` تتجاوز فحوصات الصلاحيات الفردية. أمر `givekey` يحتاج لاعبًا Online ويتحقق من كمية المفتاح."
+      },
+      "group": {
+        "en": "Reference",
+        "ar": "المرجع"
+      },
+      "order": 3
+    },
+    {
+      "id": "permissions",
+      "title": {
+        "en": "Permissions",
+        "ar": "الصلاحيات"
+      },
+      "body": {
+        "en": "Explains each permission and its purpose.\n\n| Permission | Default | Description |\n|---|---|---|\n| `ZxCrates.admin` | OP | Global admin bypass |\n| `ZxCrates.create` | OP | Create crates |\n| `ZxCrates.edit` | OP | Open/edit crates and bind locations |\n| `ZxCrates.delete` | OP | Delete crates |\n| `ZxCrates.open` | TRUE | Open/preview crates |\n| `ZxCrates.break` | OP | Break/remove bound crates |\n| `ZxCrates.givekey` | OP | Give keys |\n| `ZxCrates.givecrate` | OP | Give crate items |\n| `ZxCrates.keyall` | OP | KeyAll execution permission path |\n| `ZxCrates.reload` | OP | Reload plugin data |\n| `ZxCrates.info` | OP | Inspect crate info |\n| `crate.view_distance.set` | OP | Set hologram view distance |\n| `crates.view_distance.set` | OP | Alternate view-distance permission |\n\nA command may require `ZxCrates.edit` first and then a specialized permission for the exact action.",
+        "ar": "يوضح كل صلاحية ووظيفتها الأساسية.\n\n| الصلاحية | الافتراضي | الوصف |\n|---|---|---|\n| `ZxCrates.admin` | OP | تجاوز إداري شامل |\n| `ZxCrates.create` | OP | إنشاء الصناديق |\n| `ZxCrates.edit` | OP | فتح/تعديل الصناديق وربط المواقع |\n| `ZxCrates.delete` | OP | حذف الصناديق |\n| `ZxCrates.open` | TRUE | فتح/معاينة الصناديق |\n| `ZxCrates.break` | OP | كسر/إزالة الصناديق المرتبطة |\n| `ZxCrates.givekey` | OP | إعطاء المفاتيح |\n| `ZxCrates.givecrate` | OP | إعطاء عناصر الـCrate |\n| `ZxCrates.keyall` | OP | مسار تنفيذ KeyAll |\n| `ZxCrates.reload` | OP | إعادة تحميل بيانات البلوقن |\n| `ZxCrates.info` | OP | فحص معلومات Crate |\n| `crate.view_distance.set` | OP | تعديل View Distance للهولوجرام |\n| `crates.view_distance.set` | OP | صلاحية بديلة لنفس الإعداد |\n\nقد يتطلب الأمر أولًا `ZxCrates.edit` ثم صلاحية متخصصة للإجراء المحدد."
+      },
+      "group": {
+        "en": "Reference",
+        "ar": "المرجع"
+      },
+      "order": 4
+    },
+    {
+      "id": "crate-system",
+      "title": {
+        "en": "Crate System",
+        "ar": "نظام الـCrate"
+      },
+      "body": {
+        "en": "A simple explanation of crate behavior.\n\nEvery crate is represented by a `Crate` model. New crates default to:\n- `type: RANDOM`\n- `block-material: CHEST`\n- `animation: GALAXY`\n- keys enabled, `cloud` delivery and stacked keys\n- `open-permission: \"\"`\n- `cooldown-seconds: 0`\n- `broadcast-win: false`\n- `slots: 45`\n- hologram enabled, offset `1.2`, view distance `32`, background disabled\n\n## Slot normalization\nThe crate inventory is normalized to 9..54 slots in multiples of 9. Values outside the range are clamped and rounded down to the nearest valid multiple.\n\n## Random vs Select\n`RANDOM` rolls on reward chances and picks a reward. `SELECT` is a player-selection flow; the README notes a green confirmation button after selecting a reward and no reward title in that path.\n\n## Locations\nA crate can have multiple stored block locations. Location keys are stored as `world:x:y:z`.",
+        "ar": "شرح مبسط لطريقة عمل الصناديق.\n\nكل Crate يمثله كائن `Crate`. القيم الافتراضية عند إنشاء Crate جديد هي:\n- `type: RANDOM`\n- `block-material: CHEST`\n- `animation: GALAXY`\n- المفاتيح مفعلة، والتسليم `cloud` والمفاتيح قابلة للتكديس\n- `open-permission: \"\"`\n- `cooldown-seconds: 0`\n- `broadcast-win: false`\n- `slots: 45`\n- Hologram مفعّل، offset مقداره `1.2`، ومدى ظهور `32`، والخلفية معطلة\n\n## توحيد الـSlots\nيتم تحويل عدد الخانات إلى نطاق 9..54 وبمضاعفات 9. القيم خارج النطاق يتم قصها وتقريبها لأسفل إلى أقرب قيمة صحيحة.\n\n## Random وSelect\n`RANDOM` يختار الجائزة اعتمادًا على نسب الـChance. أما `SELECT` فهو مسار اختيار من اللاعب؛ ويذكر README وجود زر تأكيد أخضر بعد اختيار الجائزة، مع عدم عرض Reward Title في هذا المسار.\n\n## المواقع\nيمكن أن يحتوي الـCrate على أكثر من موقع بلوك، وتخزن المفاتيح بصيغة `world:x:y:z`."
+      },
+      "group": {
+        "en": "Core Concepts",
+        "ar": "الأساسيات"
+      },
+      "order": 5
+    },
+    {
+      "id": "rewards",
+      "title": {
+        "en": "Rewards & Chance",
+        "ar": "الجوائز ونظام الـChance"
+      },
+      "body": {
+        "en": "Explains rewards and their chance values.\n\nA reward contains an ID, optional GUI slot, chance, manual/automatic chance mode, type, optional ItemStack, amount and command list.\n\n## Reward types\n- `GIVE_ITEM` — give the stored ItemStack.\n- `GIVE_CLOUD` — use cloud-key/cloud-delivery storage behavior.\n- `EXECUTE_COMMAND` — run configured commands.\n- `MIXED` — combine item and/or command behavior.\n\n## Direct percentages\nThe chance is a direct percentage, not a weight. `4.5` means exactly `4.5%`. The selector rolls over `0..100`; any unused percentage intentionally means no reward.\n\nThe total configured chance must not exceed `100%`.\n\n## Automatic distribution\nRewards are automatic by default. The remaining percentage after manual rewards is split equally among all automatic rewards.\n\nExample: three automatic rewards = `33.33%` each. If one reward is manually set to `10%`, the remaining `90%` is split as `45% + 45%`.\n\nIn the Reward Editor, **Chance** accepts `0..100`. `Shift + Right Click` returns that reward to automatic distribution.\n\nUse `%reward_chance%` inside reward lore, or `%zxcrates_reward_chance_<crate_id>_<reward_id>%` externally with PlaceholderAPI.",
+        "ar": "يوضح الجوائز ونسب الاحتمالات بوضوح.\n\nكل جائزة تحتوي على ID، وSlot اختياري، وChance، ووضع Manual/Automatic، ونوع الجائزة، وItemStack اختياري، وAmount، وقائمة أوامر.\n\n## أنواع الجوائز\n- `GIVE_ITEM` — إعطاء الـItemStack المحفوظ.\n- `GIVE_CLOUD` — استخدام سلوك التخزين/التسليم السحابي.\n- `EXECUTE_COMMAND` — تنفيذ الأوامر المعرفة.\n- `MIXED` — دمج سلوك العنصر و/أو الأوامر.\n\n## النسب المباشرة\nالـChance نسبة مباشرة وليست Weight. القيمة `4.5` تعني بالضبط `4.5%`. يتم السحب على المجال `0..100` وأي نسبة غير مستخدمة تعني عدم اختيار جائزة.\n\nيجب ألا يتجاوز مجموع نسب الجوائز `100%`.\n\n## التوزيع التلقائي\nالجوائز Automatic افتراضيًا. النسبة المتبقية بعد الجوائز Manual يتم تقسيمها بالتساوي على جميع الجوائز Automatic.\n\nمثال: 3 جوائز Automatic = `33.33%` لكل واحدة. إذا ثبتت جائزة يدويًا على `10%` تصبح النسبة المتبقية `90%` فتأخذ الجائزتان `45% + 45%`.\n\nفي Reward Editor يقبل حقل **Chance** قيمة من `0..100`. استخدام `Shift + Right Click` يعيد الجائزة إلى التوزيع Automatic.\n\nاستخدم `%reward_chance%` داخل Lore الجائزة، أو `%zxcrates_reward_chance_<crate_id>_<reward_id>%` خارج البلوقن مع PlaceholderAPI."
+      },
+      "group": {
+        "en": "Core Concepts",
+        "ar": "الأساسيات"
+      },
+      "order": 6
+    },
+    {
+      "id": "configuration",
+      "title": {
+        "en": "config.yml",
+        "ar": "config.yml"
+      },
+      "body": {
+        "en": "A practical reference for the main plugin settings, including what the important changes actually do.\n\n```yaml\nstorage:\n  type: flatfile\n  flush-seconds: 30\n  auto-backup: true\n  mysql:\n    host: localhost\n    port: 3306\n    database: zxcrates\n    username: root\n    password: change-me\n    pool-size: 10\n    connection-timeout-ms: 5000\n\nsecurity:\n  max-command-length: 256\n  max-lore-lines: 64\n  max-item-bytes: 16384\n  open-rate-limit-ms: 250\n\nkeys:\n  create-on-crate-create: true\n  default-delivery: inventory\n  display-name: \"&#FFD54ACrate Key\"\n  lore:\n    - \"&#AAAAAAFor: &#FFFFFF{crate}\"\n    - \"&#AAAAAAAmount: &#FFFFFF{amount}\"\n\nopening:\n  default-animation: roulette\n  one-at-a-time: true\n  broadcast-win: false\n  effects: true\n\neditor:\n  rows: 6\n  reward-page-size: 45\n\ncrate-defaults:\n  slots: 27\n  hologram:\n    enabled: true\n    offset-y: 1.2\n    text: \"&#FFD54A{crate}\\n&#AAAAAARight-click to open\"\n\nplaceholders:\n  enabled: true\n```\n\n## Important settings and their effects\n\n### `storage.type`\n- `flatfile`: stores crate and key data in local files.\n- `mysql`: uses MySQL instead of local repository storage.\n- Changing this value changes the repository selected at startup. MySQL must be configured correctly before switching to it.\n\n### `storage.mysql.*`\nThese values matter when `storage.type: mysql`:\n- `host` and `port`: database server location.\n- `database`, `username`, `password`: database credentials and schema.\n- `pool-size`: size of the plugin's I/O thread pool and the MySQL connection pool. Increasing it aggressively does not automatically improve performance.\n- `connection-timeout-ms`: how long a MySQL connection attempt may wait before failing.\n\n### `security.max-command-length`\nMaximum length of a reward command accepted by the editor. Lowering it rejects longer commands; increasing it permits longer commands.\n\n### `security.max-lore-lines`\nMaximum number of Lore lines accepted when importing an item through the editor.\n\n### `security.max-item-bytes`\nMaximum serialized ItemStack size accepted by the editor. Higher values allow more complex/larger items but increase the accepted data limit.\n\n### `security.open-rate-limit-ms`\nMinimum delay between very rapid opening attempts by the same player. Higher values make rapid clicks more restrictive; lower values are more permissive.\n\n### `keys.create-on-crate-create`\nWhen `true`, default key settings are created automatically when a new crate is created. When `false`, they are not created automatically.\n\n### `keys.default-delivery`\n- `inventory`: physical inventory key delivery.\n- `cloud`: cloud key storage.\nThis is the default used for new crate key settings; an individual crate can override its own delivery mode.\n\n### `keys.display-name` and `keys.lore`\nDefault key display name and Lore. The plugin color parser is supported, along with `{crate}` and `{amount}` substitutions.\n\n### `opening.default-animation`\nDefault animation used by `random` crates when the crate itself does not specify another animation.\n\n### `opening.one-at-a-time`\nControls the default single-opening restriction for players. When enabled, concurrent opening sessions are prevented.\n\n### `opening.broadcast-win`\nDefault win-broadcast behavior, with the crate file able to define its own `broadcast-win` value.\n\n### `opening.effects`\nControls whether opening-related visual effects are enabled.\n\n### `editor.rows`\nChanges the number of rows in the crate editor GUI.\n\n### `editor.reward-page-size`\nMaximum number of rewards shown per editor page.\n\n### `crate-defaults.slots`\nDefault opening GUI size. Valid Minecraft inventory sizes are `9` to `54` in multiples of `9`.\n\n### `crate-defaults.hologram.enabled`\nEnables the default hologram for placed crates that use the default hologram settings.\n\n### `crate-defaults.hologram.offset-y`\nVertical offset of the hologram above the crate block. Higher values move it upward; lower values place it closer to the crate.\n\n### `crate-defaults.hologram.text`\nDefault hologram text. Multiple lines can be written with `\\n`, and supported placeholders and colors can be used.\n\n### `placeholders.enabled`\nWhen `true`, the PlaceholderAPI expansion is registered automatically when PlaceholderAPI is installed. When `false`, the expansion is not registered.\n\n> **Important:** `storage.flush-seconds` and `storage.auto-backup` are present as future/placeholder settings in the current resource, but the current code does not read them to alter runtime behavior. Changing them currently has no runtime effect.\n",
+        "ar": "مرجع عملي لإعدادات البلوقن الرئيسية، مع توضيح تأثير تعديل الخيارات المهمة.\n\n```yaml\n# إعدادات ZxCrates الرئيسية\nstorage:\n  type: flatfile\n  flush-seconds: 30\n  auto-backup: true\n  mysql:\n    host: localhost\n    port: 3306\n    database: zxcrates\n    username: root\n    password: change-me\n    pool-size: 10\n    connection-timeout-ms: 5000\n\nsecurity:\n  max-command-length: 256\n  max-lore-lines: 64\n  max-item-bytes: 16384\n  open-rate-limit-ms: 250\n\nkeys:\n  create-on-crate-create: true\n  default-delivery: inventory\n  display-name: \"&#FFD54ACrate Key\"\n  lore:\n    - \"&#AAAAAAFor: &#FFFFFF{crate}\"\n    - \"&#AAAAAAAmount: &#FFFFFF{amount}\"\n\nopening:\n  default-animation: roulette\n  one-at-a-time: true\n  broadcast-win: false\n  effects: true\n\neditor:\n  rows: 6\n  reward-page-size: 45\n\ncrate-defaults:\n  slots: 27\n  hologram:\n    enabled: true\n    offset-y: 1.2\n    text: \"&#FFD54A{crate}\\n&#AAAAAARight-click to open\"\n\nplaceholders:\n  enabled: true\n```\n\n## أهم الإعدادات وتأثير تعديلها\n\n### `storage.type`\n- `flatfile`: يحفظ بيانات Crates والمفاتيح في ملفات محلية.\n- `mysql`: يستخدم قاعدة MySQL بدل التخزين المحلي.\n- تغيير هذا الخيار يغيّر Repository الذي يستخدمه البلوقن عند التشغيل. يجب تجهيز بيانات MySQL بشكل صحيح قبل استخدام `mysql`.\n\n### `storage.mysql.*`\nهذه الخيارات تؤثر فقط عند استخدام `storage.type: mysql`:\n- `host` و`port`: مكان خادم قاعدة البيانات.\n- `database` و`username` و`password`: بيانات الدخول وقاعدة البيانات.\n- `pool-size`: عدد خيوط عمليات I/O التي ينشئها البلوقن وحجم مسبح اتصالات MySQL المستخدم. رفعه كثيرًا لا يعني أداءً أفضل دائمًا.\n- `connection-timeout-ms`: الحد الزمني لمحاولة إنشاء اتصال MySQL. القيمة الأقل تفشل أسرع عند وجود مشكلة اتصال، والقيمة الأعلى تمنح الاتصال وقتًا أطول.\n\n### `security.max-command-length`\nيحدد أكبر طول لأمر يمكن حفظه ضمن الجائزة. خفض القيمة يقيّد الأوامر الطويلة، ورفعها يسمح بأوامر أطول.\n\n### `security.max-lore-lines`\nيحدد الحد الأقصى لعدد أسطر Lore عند استيراد العناصر من الـEditor. خفضه يمنع Lore الطويل جدًا؛ رفعه يسمح بعناصر ذات Lore أكبر.\n\n### `security.max-item-bytes`\nيحدد الحد الأقصى لحجم تمثيل الـItemStack الذي يقبله الـEditor. رفعه يسمح بعناصر أكثر تعقيدًا، لكنه يزيد الحد الأعلى للبيانات المقبولة.\n\n### `security.open-rate-limit-ms`\nيضع حدًا زمنيًا بين محاولات الفتح السريعة جدًا لنفس اللاعب. رفعه يجعل الفتحات المتتابعة أبطأ، وخفضه يجعل النظام أكثر تساهلًا مع النقرات السريعة.\n\n### `keys.create-on-crate-create`\nعند `true` ينشئ إعداد المفتاح الافتراضي عند إنشاء Crate جديدة. عند `false` لا يتم إنشاء إعداد المفتاح تلقائيًا.\n\n### `keys.default-delivery`\n- `inventory`: المفتاح يكون ضمن الـInventory.\n- `cloud`: يستخدم التخزين السحابي للمفاتيح.\nهذا الخيار يمثل القيمة الافتراضية عند إنشاء Crate جديدة، ويمكن للكريت نفسها استخدام إعداد تسليم خاص بها.\n\n### `keys.display-name` و`keys.lore`\nتتحكم باسم المفتاح وLore الافتراضي عند إنشاء إعدادات المفتاح. يدعم الاسم والأوصاف نظام الألوان الخاص بالبلوقن، و`{crate}` و`{amount}` لاستبدال اسم الكريت والكمية.\n\n### `opening.default-animation`\nيحدد الـAnimation الافتراضي الذي تستخدمه Crates من نوع `random` عندما لا يتم تحديد Animation مختلفة للكريت نفسها.\n\n### `opening.one-at-a-time`\nيُستخدم كإعداد لمنع أكثر من عملية فتح متزامنة للاعب عندما يكون مفعّلًا.\n\n### `opening.broadcast-win`\nيتحكم بالقيمة الافتراضية للبث عند الفوز، مع إمكانية تحديد `broadcast-win` داخل ملف Crate نفسه.\n\n### `opening.effects`\nعند تفعيله يسمح بتشغيل المؤثرات المرتبطة بعملية الفتح. تعطيله يقلل المؤثرات البصرية أثناء الفتح.\n\n### `editor.rows`\nيحدد عدد صفوف واجهة محرر الـCrates. تغييره يغير حجم قائمة المحرر فقط.\n\n### `editor.reward-page-size`\nيحدد العدد الأقصى النظري للجوائز المعروضة في صفحة المحرر الواحدة.\n\n### `crate-defaults.slots`\nهذه قيمة افتراضية لعدد خانات واجهة فتح Crate. يجب أن تكون بين `9` و`54` وبمضاعفات `9` حتى تكون واجهة Minecraft صالحة.\n\n### `crate-defaults.hologram.enabled`\nعند `true` يتم تفعيل الهولوجرام الافتراضي للـCrates التي تستخدم الإعداد الافتراضي.\n\n### `crate-defaults.hologram.offset-y`\nيحدد الارتفاع العمودي للهولوجرام فوق بلوك الكريت. زيادة القيمة ترفع النص، وخفضها تجعله أقرب إلى الكريت.\n\n### `crate-defaults.hologram.text`\nالنص الافتراضي للهولوجرام. يمكن كتابة عدة أسطر باستخدام `\\n`، ويمكن استخدام Placeholders والألوان المدعومة.\n\n### `placeholders.enabled`\nعند `true` يسمح للبلوقن بتسجيل تكامل PlaceholderAPI إذا كان PlaceholderAPI مثبتًا. عند `false` لا يتم تسجيل الـExpansion.\n\n> **ملاحظة مهمة:** `storage.flush-seconds` و`storage.auto-backup` موجودان في الملف كإعدادات مستقبلية/احتياطية، لكن الكود الحالي لا يقرأهما لتغيير سلوك التشغيل. تغييرهما حاليًا لا يغير Runtime behavior.\n"
+      },
+      "group": {
+        "en": "Configuration",
+        "ar": "الإعدادات"
+      },
+      "order": 7
+    },
+    {
+      "id": "crate-yaml",
+      "title": {
+        "en": "Crate YAML",
+        "ar": "ملف Crate YAML"
+      },
+      "body": {
+        "en": "This section documents the fields the plugin actually reads from each crate file and what important changes do.\n\n```yaml\nid: supercrate\ndisplay-name: \"&#7C5CFFSuper Crate\"\ntype: random\nblock-material: CHEST\nanimation: roulette\nslots: 27\n\nkey:\n  create: true\n  delivery: inventory\n\nopen-permission: \"\"\ncooldown-ms: 1000\nbroadcast-win: false\n\nhologram:\n  enabled: true\n  offset-y: 1.2\n  text: \"&#FFD54A{crate}\\n&#AAAAAARight-click to open\"\n\nitem-lore:\n  - \"&#555555----------------\"\n  - \"&#FFD54AReward from {crate}\"\n  - \"&7This information is crate-only.\"\n\nlocations: []\n\nrewards:\n  0:\n    id: 1\n    chance: 50.0\n    type: give_item\n    amount: 1\n    commands: []\n    item: \"\"\n```\n\n## Important settings\n\n### `id`\nInternal crate identifier. It should remain unique because the plugin uses it for crate data, keys and crate-specific placeholders.\n\n### `display-name`\nThe displayed crate name used by GUIs and messages. Changing it does not change the internal `id`.\n\n### `type`\nControls reward selection:\n- `random`: selects a reward using its `chance` value.\n- `select`: opens a GUI where the player chooses a reward instead of using the normal random selection path.\n\n### `block-material`\nDefines the world block representing the crate, for example `CHEST`. Changing it changes which block is expected for crate interaction.\n\n### `animation`\nSelects the animation used by this crate. Changing it changes the opening presentation without changing the reward configuration.\n\n### `slots`\nOpening GUI size for this crate. Use `9` to `54` in multiples of `9`.\n\n### `key.create`\nWhen `true`, a key setup is created automatically for this crate. When `false`, it is not created automatically.\n\n### `key.delivery`\nControls how keys for this crate are stored/delivered:\n- `inventory`: physical inventory key.\n- `cloud`: cloud key storage.\n\n### `open-permission`\nPermission required to open the crate. Leave it as `\"\"` when no additional permission is required.\n\n### `cooldown-ms`\nThe cooldown applied to reopening this **same crate** after an opening, in milliseconds. For example, `1000` is one second and `0` disables the crate-specific cooldown.\n\n`config.yml` also contains `security.open-rate-limit-ms`, which is a separate rapid-click protection limit. Therefore a short delay can still apply even when the crate cooldown is `0`.\n\n### `broadcast-win`\nControls whether this crate allows the win broadcast path to announce the reward.\n\n## Hologram\n\n### `hologram.enabled`\nEnables or disables the hologram for this crate.\n\n### `hologram.offset-y`\nMoves the hologram vertically above the crate block.\n\n### `hologram.text`\nDisplayed hologram text. Multiple lines can be written with `\\n`, with supported placeholders and colors.\n\n## `item-lore`\nThis Lore is **temporary display data** used in Preview, opening GUIs and animations. It is not permanently merged into the original reward ItemStack; the player receives the original reward Lore.\n\n## `locations`\nStores the recorded locations where this crate has been placed. The plugin updates this data as crates are placed/bound, so manual edits should be made carefully.\n\n## Rewards\nEach entry under `rewards` represents one reward.\n\n### `id`\nInternal reward ID.\n\n### `chance`\nThe reward weight used when `type: random`. Increasing it relative to other rewards increases its relative selection chance.\n\n### `type`\nSupported reward types in the current source:\n- `give_item`\n- `give_cloud`\n- `execute_command`\n- `mixed`\n\n### `amount`\nItem quantity used by item-based rewards.\n\n### `commands`\nReward commands executed according to the reward type. They may use supported substitutions such as `{player}`.\n\n### `item`\nSerialized ItemStack data stored for the reward. In normal use, this is best managed through the GUI editor instead of hand-editing the serialized value.\n\n> **Important:** A field not listed here is not automatically supported. This page follows the fields the current source loader actually reads.\n",
+        "ar": "يوضح هذا القسم الحقول التي يقرأها البلوقن فعليًا من ملف كل Crate، وما الذي يحدث عند تعديل الإعدادات المهمة.\n\n```yaml\nid: supercrate\ndisplay-name: \"&#7C5CFFSuper Crate\"\ntype: random\nblock-material: CHEST\nanimation: roulette\nslots: 27\n\nkey:\n  create: true\n  delivery: inventory\n\nopen-permission: \"\"\ncooldown-ms: 1000\nbroadcast-win: false\n\nhologram:\n  enabled: true\n  offset-y: 1.2\n  text: \"&#FFD54A{crate}\\n&#AAAAAARight-click to open\"\n\nitem-lore:\n  - \"&#555555────────────────\"\n  - \"&#FFD54AReward from {crate}\"\n  - \"&7This information is crate-only.\"\n\nlocations: []\n\nrewards:\n  0:\n    id: 1\n    chance: 50.0\n    type: give_item\n    amount: 1\n    commands: []\n    item: \"\"\n```\n\n## شرح الإعدادات المهمة\n\n### `id`\nالمعرّف الداخلي للكريت. يجب أن يكون ثابتًا ومميزًا لأن البلوقن يستخدمه للوصول إلى بيانات الكريت ومفاتيحها وPlaceholders الخاصة بها.\n\n### `display-name`\nالاسم الذي يظهر للكريت في الـGUI والرسائل التي تستخدم اسم الكريت. تغييره لا يغيّر `id`.\n\n### `type`\nيحدد طريقة اختيار الجائزة:\n- `random`: يختار جائزة باستخدام قيمة `chance`.\n- `select`: يفتح واجهة لاختيار الجائزة بدل إجراء الاختيار العشوائي مباشرة.\n\n### `block-material`\nيحدد نوع البلوك الذي يمثل الكريت داخل العالم، مثل `CHEST`. تغيير القيمة يغيّر البلوك المطلوب لاعتبار المكان Crate عند التفاعل.\n\n### `animation`\nيحدد الـAnimation المستخدمة لهذه الكريت. إذا غيّرته من `roulette` إلى نوع آخر، ستتغير طريقة عرض عملية الفتح دون الحاجة إلى تغيير الجائزة نفسها.\n\n### `slots`\nعدد خانات واجهة الفتح لهذه الكريت. استخدم قيمة من `9` إلى `54` وبمضاعفات `9`.\n\n### `key.create`\nعند `true` يتم إنشاء إعداد مفتاح لهذه الكريت عند إنشائها. عند `false` لا يتم إنشاء إعداد المفتاح تلقائيًا.\n\n### `key.delivery`\nيحدد طريقة تخزين/تسليم مفتاح هذه الكريت:\n- `inventory`: المفتاح يكون عنصرًا داخل Inventory.\n- `cloud`: المفتاح يعتمد على التخزين السحابي.\n\n### `open-permission`\nاسم Permission المطلوب لفتح الكريت. اتركه فارغًا `\"\"` عندما لا تريد Permission إضافية.\n\n### `cooldown-ms`\nالمدة التي يمنع خلالها اللاعب من إعادة فتح **نفس الكريت** بعد فتحها، بالميلي ثانية. مثلًا `1000` = ثانية واحدة، و`0` يعني بدون Cooldown للكريت نفسها.\n\nيوجد أيضًا `security.open-rate-limit-ms` في `config.yml`، وهو حد منفصل لحماية النقرات السريعة جدًا؛ لذلك قد تشاهد منعًا قصيرًا حتى عندما يكون Cooldown الكريت `0`.\n\n### `broadcast-win`\nعند `true` يسمح للكريت ببث الفوز في الدردشة وفق مسار البث المستخدم، وعند `false` لا يتم بث الفوز لهذه الكريت.\n\n## الهولوجرام\n\n### `hologram.enabled`\nتشغيل أو إيقاف هولوجرام هذه الكريت.\n\n### `hologram.offset-y`\nيرفع أو يخفض الهولوجرام فوق البلوك. زيادة القيمة = الهولوجرام أعلى، وخفضها = أقرب إلى الكريت.\n\n### `hologram.text`\nالنص الذي يظهر فوق الكريت. يمكنك استخدام عدة أسطر بواسطة `\\n`، إضافة إلى Placeholders والألوان المدعومة.\n\n## `item-lore`\nهذا Lore **مؤقت للعرض** داخل Preview وواجهة الفتح والـAnimation. لا يكتب البلوقن هذا الـLore بشكل دائم داخل ItemStack الأصلي للجائزة؛ عند تسليم الجائزة للاعب يبقى الـLore الأصلي للعنصر.\n\n## `locations`\nتحتوي على المواقع التي وُضعت فيها هذه الكريت. البلوقن يقوم بتحديثها عند وضع/ربط الكريت، لذلك لا يُنصح بتعديلها يدويًا إلا عند معرفة تأثير ذلك على الأماكن المسجلة.\n\n## الجوائز\nكل عنصر تحت `rewards` يمثل جائزة مستقلة.\n\n### `id`\nرقم الجائزة الداخلي.\n\n### `chance`\nوزن/احتمال الجائزة المستخدم عند `type: random`. رفعه مقارنة بباقي الجوائز يزيد فرصة اختيارها نسبيًا.\n\n### `type`\nالأنواع المدعومة في المصدر هي:\n- `give_item`\n- `give_cloud`\n- `execute_command`\n- `mixed`\n\n### `amount`\nكمية العنصر في مسار جائزة العنصر.\n\n### `commands`\nأوامر الجائزة التي ينفذها البلوقن حسب نوع الجائزة. يمكن أن تتضمن `{player}` والمخرجات المدعومة في مسار تنفيذ الجائزة.\n\n### `item`\nبيانات الـItemStack المحفوظة للجائزة. غالبًا تتم إدارتها من خلال الـGUI Editor بدل كتابتها يدويًا.\n\n> **مهم:** أي حقل غير مذكور هنا لا يعني تلقائيًا أنه مدعوم. هذا القسم يعتمد على الحقول التي يقوم Loader في المصدر الحالي بقراءتها فعليًا.\n"
+      },
+      "group": {
+        "en": "Configuration",
+        "ar": "الإعدادات"
+      },
+      "order": 8
+    },
+    {
+      "id": "keys",
+      "title": {
+        "en": "Keys",
+        "ar": "المفاتيح"
+      },
+      "body": {
+        "en": "A simple guide to key delivery.\n\nZxCrates supports two delivery modes:\n- `item` — a physical inventory item. The default item is a `TRIPWIRE_HOOK` unless a custom item is configured.\n- `cloud` — keys are stored outside the player's normal inventory.\n\n## Defaults\n```yaml\nkeys:\n  create-on-crate-create: true\n  default-delivery: cloud\n  display-name: \"&#FFD54AZxCrates Key\"\n  stacked: true\n```\n\n`stacked: true` allows keys to accumulate; false keeps separate item delivery where applicable.\n\n## Key item\nThe key display name supports the plugin color parser. A custom ItemStack can be configured through the editor. Key lore supports `{crate}` and `{amount}` placeholders in the resource default.\n\nThe code caches physical and cloud key placeholders for player-specific holograms, avoiding inventory reads from the global scheduler.",
+        "ar": "شرح مبسط لأنواع المفاتيح المتاحة.\n\nيدعم ZxCrates طريقتين لتسليم المفاتيح:\n- `item` — عنصر فعلي داخل Inventory. الافتراضي `TRIPWIRE_HOOK` ما لم يتم تخصيص عنصر آخر.\n- `cloud` — تخزين المفتاح خارج الـInventory العادي للاعب.\n\n## الإعدادات الافتراضية\n```yaml\nkeys:\n  create-on-crate-create: true\n  default-delivery: cloud\n  display-name: \"&#FFD54AZxCrates Key\"\n  stacked: true\n```\n\n`stacked: true` يسمح بتجميع المفاتيح؛ وعند تعطيله يستخدم التسليم المنفصل حيث ينطبق.\n\n## عنصر المفتاح\nاسم المفتاح يدعم Color parser الخاص بالبلوقن. ويمكن اختيار ItemStack مخصص من خلال الـEditor. والـLore الافتراضي يدعم `{crate}` و`{amount}`.\n\nالكود يقوم بعمل Cache لـPlaceholders الخاصة بالمفاتيح الفيزيائية والسحابية داخل الهولوجرامات المخصصة لكل لاعب، لتجنب قراءة الـInventory من Global Scheduler."
+      },
+      "group": {
+        "en": "Configuration",
+        "ar": "الإعدادات"
+      },
+      "order": 9
+    },
+    {
+      "id": "animations",
+      "title": {
+        "en": "Animations",
+        "ar": "الأنيميشنات"
+      },
+      "body": {
+        "en": "Briefly explains available animations and effects.\n\nThe current `AnimationType` enum defines 11 values:\n\n| Animation | Visual identity in source |\n|---|---|\n| `GALAXY` | Amethyst/GLOW_INK-style icon ring, `END_ROD` particles, amethyst chime |\n| `CELESTIAL_RUSH` | Fast row/column rush, firework-style visuals |\n| `NEBULA_SPIRAL` | Portal/end-themed spiral motion |\n| `INFERNO_BLOOM` | Blaze/magma/fire theme |\n| `FROST_NOVA` | Snow/prismarine circular motion |\n| `THUNDERSTORM` | Lightning rod/electric spark theme |\n| `OCEAN_TIDE` | Prismarine/heart-of-the-sea wave theme |\n| `MATRIX_PULSE` | Lime/redstone pulse/grid theme |\n| `ROYAL_CROWN` | Gold/emerald crown-style center motion |\n| `DIMENSION_BREAK` | Ender/obsidian dimensional transition |\n| `LEGENDARY_ASCENT` | Upward/ascending finish pattern |\n\nThe animation manager also assigns animation-specific particles, sounds and movement speeds. The README calls this “Galaxy plus ten motion-heavy animations.”\n\n## Opening safety\nThe opening path uses an explicit completion guard. The plugin clears the active opening state on normal completion, inventory close, player quit and error paths; a watchdog is also present as a last-resort cleanup route.",
+        "ar": "يوضح الأنيميشنات وتأثيراتها بشكل مختصر.\n\nالقائمة الحالية داخل `AnimationType` تحتوي على 11 قيمة:\n\n| Animation | الهوية البصرية في المصدر |\n|---|---|\n| `GALAXY` | حركة حلقية بطابع Amethyst/GLOW_INK مع `END_ROD` وصوت Amethyst |\n| `CELESTIAL_RUSH` | اندفاع سريع بين الصفوف/الأعمدة مع مؤثرات Firework |\n| `NEBULA_SPIRAL` | حركة حلزونية بطابع Portal وEnd |\n| `INFERNO_BLOOM` | طابع Blaze/Magma/Fire |\n| `FROST_NOVA` | حركة دائرية ثلجية مع Prismarine |\n| `THUNDERSTORM` | طابع Lightning Rod وElectric Spark |\n| `OCEAN_TIDE` | موجة Prismarine وHeart of the Sea |\n| `MATRIX_PULSE` | Pulse/Grid باستخدام Lime وRedstone |\n| `ROYAL_CROWN` | حركة مركزية بطابع Gold وEmerald |\n| `DIMENSION_BREAK` | انتقال Dimensional بطابع Ender وObsidian |\n| `LEGENDARY_ASCENT` | نمط صعودي تدريجي للنتيجة النهائية |\n\nيحدد Animation Manager أيضًا Particle وSound وSpeed مخصصًا لكل نوع. ويصف README المجموعة بأنها Galaxy + عشرة Animations حركية.\n\n## أمان الفتح\nمسار الفتح يستخدم completion guard صريحًا، ويزيل حالة الفتح عند النهاية الطبيعية وإغلاق الـInventory وخروج اللاعب ومسارات الخطأ، مع وجود Watchdog كحل أخير للتنظيف."
+      },
+      "group": {
+        "en": "Appearance",
+        "ar": "العرض"
+      },
+      "order": 10
+    },
+    {
+      "id": "holograms",
+      "title": {
+        "en": "Holograms",
+        "ar": "الهولوجرامات"
+      },
+      "body": {
+        "en": "Explains holograms and their key settings.\n\nZxCrates uses Minecraft `TextDisplay` entities for crate holograms.\n\n## Features\n- Internal placeholders and PlaceholderAPI placeholders.\n- Legacy color codes and hex colors.\n- Player-specific rendering when the text contains player-specific values.\n- Static displays are reused; dynamic displays are updated in place instead of being destroyed/recreated whenever values change.\n- Orphan cleanup when a crate is removed/broken.\n- Optional default TextDisplay background.\n- Per-crate view distance.\n\n## Defaults\n```yaml\nhologram:\n  enabled: true\n  offset-y: 1.2\n  background: false\n  view-distance: 32\n```\n\n`offset-y` is clamped to `0.25..8`. View distance is clamped to `0..128`. A value of `0` hides that crate hologram. The manager also applies the native Display `viewRange` as another rendering guard and performs explicit per-player distance checks.\n\n## Commands\n- `/crate hologram <crateid> background default`\n- `/crate hologram <crateid> background transparent`\n- `/crate hologram <crateid> view_distance <crateid> <value>`\n\nThe view-distance command accepts the legacy spelling `view-distance` too. Permissions are `crate.view_distance.set` and `crates.view_distance.set`; `ZxCrates.admin` bypasses them.",
+        "ar": "يوضح الهولوجرامات وإعداداتها الأساسية المهمة.\n\nيستخدم ZxCrates كيانات Minecraft من نوع `TextDisplay` لهولوجرامات الصناديق.\n\n## المميزات\n- Internal placeholders وPlaceholderAPI.\n- ألوان Legacy وHex.\n- عرض مخصص لكل لاعب عند وجود قيم Player-specific.\n- إعادة استخدام الـDisplays الثابتة، وتحديث الـDisplays الديناميكية في مكانها بدل حذفها وإعادة إنشائها مع كل تغيير.\n- تنظيف الـorphan displays عند حذف/كسر Crate.\n- خلفية TextDisplay اختيارية.\n- View Distance مستقلة لكل Crate.\n\n## الافتراضيات\n```yaml\nhologram:\n  enabled: true\n  offset-y: 1.2\n  background: false\n  view-distance: 32\n```\n\nيتم حصر `offset-y` بين `0.25..8`، وView Distance بين `0..128`. القيمة `0` تخفي هولوجرام ذلك الكريت. كما يستخدم manager قيمة Display `viewRange` الأصلية بالإضافة إلى فحوصات المسافة لكل لاعب.\n\n## الأوامر\n- `/crate hologram <crateid> background default`\n- `/crate hologram <crateid> background transparent`\n- `/crate hologram <crateid> view_distance <crateid> <value>`\n\nيمكن أيضًا استخدام `view-distance`. الصلاحيات هي `crate.view_distance.set` و`crates.view_distance.set`، مع تجاوز `ZxCrates.admin`."
+      },
+      "group": {
+        "en": "Appearance",
+        "ar": "العرض"
+      },
+      "order": 11
+    },
+    {
+      "id": "placeholders",
+      "title": {
+        "en": "Placeholders",
+        "ar": "Placeholders"
+      },
+      "body": {
+        "en": "A quick reference for available placeholders.\n\nWhen PlaceholderAPI is installed and enabled, ZxCrates registers its expansion. The documented external format is `%zxcrates_<name>%`.\n\n| Placeholder | Meaning |\n|---|---|\n| `%zxcrates_player%` | Player name |\n| `%zxcrates_uuid%` | Player UUID |\n| `%zxcrates_crate_keys_total%` | Total physical/cloud key count |\n| `%zxcrates_crate_keys_<crate_id>%` | Keys for a crate |\n| `%zxcrates_crate_keys_cloud_<crate_id>%` | Cloud keys for a crate |\n| `%zxcrates_crate_name_<crate_id>%` | Crate display/name data |\n| `%zxcrates_crate_type_<crate_id>%` | Crate type |\n| `%zxcrates_crate_rewards_<crate_id>%` | Reward count |\n| `%zxcrates_crate_opens_<crate_id>%` | Opens for a specific crate |\n| `%zxcrates_crate_opens_total%` | Total opens |\n| `%zxcrates_crate%` | Current crate name/context |\n| `%zxcrates_crate_id%` | Current crate ID |\n| `%zxcrates_crate_type%` | Current crate type |\n| `%zxcrates_crate_rewards%` | Current reward count |\n| `%zxcrates_crate_slots%` | Current crate slots |\n| `%zxcrates_crate_animation%` | Current animation |\n| `%zxcrates_crate_keys%` | Current crate keys |\n| `%reward_chance%` | Reward chance inside reward lore |\n| `%zxcrates_reward_chance_<crate_id>_<reward_id>%` | Reward chance externally |\n| `%zxcrates_last_win%` | Last winning reward |\n| `%zxcrates_last_win_crate%` | Crate of last win |\n| `%zxcrates_last_win_amount%` | Amount of last win |\n| `%zxcrates_opening_crate%` | Crate currently opening |\n| `%zxcrates_keyall_time%` | Default/active KeyAll countdown |\n| `%zxcrates_keyall_time_<keyall_id>%` | Named KeyAll countdown |\n| `%zxcrates_keyall_default%` | Default KeyAll countdown |\n\nInternal ZxCrates text can also use brace syntax such as `{keyall_time}` where supported.",
+        "ar": "مرجع سريع لجميع الـPlaceholders المتاحة.\n\nعند تثبيت PlaceholderAPI وتفعيل الإعداد، يقوم ZxCrates بتسجيل الـExpansion الخاص به. الصيغة الخارجية هي `%zxcrates_<name>%`.\n\n| Placeholder | المعنى |\n|---|---|\n| `%zxcrates_player%` | اسم اللاعب |\n| `%zxcrates_uuid%` | UUID اللاعب |\n| `%zxcrates_crate_keys_total%` | مجموع المفاتيح الفيزيائية/السحابية |\n| `%zxcrates_crate_keys_<crate_id>%` | مفاتيح Crate محدد |\n| `%zxcrates_crate_keys_cloud_<crate_id>%` | المفاتيح السحابية |\n| `%zxcrates_crate_name_<crate_id>%` | اسم/بيانات Crate |\n| `%zxcrates_crate_type_<crate_id>%` | نوع Crate |\n| `%zxcrates_crate_rewards_<crate_id>%` | عدد الجوائز |\n| `%zxcrates_crate_opens_<crate_id>%` | عدد فتحات Crate معين |\n| `%zxcrates_crate_opens_total%` | إجمالي الفتحات |\n| `%zxcrates_crate%` | اسم/سياق Crate الحالي |\n| `%zxcrates_crate_id%` | ID الحالي |\n| `%zxcrates_crate_type%` | النوع الحالي |\n| `%zxcrates_crate_rewards%` | عدد الجوائز الحالي |\n| `%zxcrates_crate_slots%` | عدد الخانات الحالي |\n| `%zxcrates_crate_animation%` | Animation الحالي |\n| `%zxcrates_crate_keys%` | مفاتيح Crate الحالي |\n| `%reward_chance%` | Chance داخل Lore الجائزة |\n| `%zxcrates_reward_chance_<crate_id>_<reward_id>%` | Chance خارجي للجائزة |\n| `%zxcrates_last_win%` | آخر جائزة فائزة |\n| `%zxcrates_last_win_crate%` | Crate لآخر فوز |\n| `%zxcrates_last_win_amount%` | كمية آخر فوز |\n| `%zxcrates_opening_crate%` | Crate الذي يتم فتحه |\n| `%zxcrates_keyall_time%` | عداد KeyAll الافتراضي/الحالي |\n| `%zxcrates_keyall_time_<keyall_id>%` | عداد KeyAll باسم محدد |\n| `%zxcrates_keyall_default%` | عداد KeyAll الافتراضي |\n\nداخل نصوص ZxCrates يمكن أيضًا استخدام صيغة الأقواس مثل `{keyall_time}` في المواضع التي يدعمها النظام."
+      },
+      "group": {
+        "en": "Reference",
+        "ar": "المرجع"
+      },
+      "order": 12
+    },
+    {
+      "id": "keyall",
+      "title": {
+        "en": "KeyAll",
+        "ar": "KeyAll"
+      },
+      "body": {
+        "en": "Explains KeyAll behavior and configuration.\n\n`keyall.yml` supports multiple independent definitions. Each definition can set:\n- `enabled`\n- `key-id`\n- `amount`\n- `interval-minutes`\n- console `commands`\n- title, subtitle and chat messages\n- sound\n\nDefault example:\n```yaml\ndefault-keyall: default\nkeyalls:\n  default:\n    enabled: true\n    key-id: test\n    amount: 1\n    interval-minutes: 60\n    commands: []\n    messages:\n      title: \"&aKEYALL\"\n      subtitle: \"&f+{amount} key(s) &7| &f{keyall_id}\"\n      chat: \"&aYou received &f{amount} &akey(s) from &f{keyall_id}&a.\"\n      sound: \"ENTITY_PLAYER_LEVELUP\"\n```\n\n## Countdown placeholders\n- `%zxcrates_keyall_time%` / `{keyall_time}`\n- `%zxcrates_keyall_time_<id>%` / `{keyall_time_<id>}`\n- `%zxcrates_keyall_default%` / `{keyall_default}`\n\nCountdowns are formatted as `MM:SS`.\n\nThe `keyall <id>` command accepts a configured KeyAll ID or an existing crate ID. When a crate ID is used, one key is distributed directly to all online players without waiting for the timer.",
+        "ar": "شرح طريقة عمل KeyAll وإعداداته.\n\nيدعم `keyall.yml` عدة تعريفات مستقلة. ويمكن لكل تعريف تحديد:\n- `enabled`\n- `key-id`\n- `amount`\n- `interval-minutes`\n- أوامر Console\n- Title وSubtitle وChat\n- Sound\n\nمثال افتراضي:\n```yaml\ndefault-keyall: default\nkeyalls:\n  default:\n    enabled: true\n    key-id: test\n    amount: 1\n    interval-minutes: 60\n    commands: []\n    messages:\n      title: \"&aKEYALL\"\n      subtitle: \"&f+{amount} key(s) &7| &f{keyall_id}\"\n      chat: \"&aYou received &f{amount} &akey(s) from &f{keyall_id}&a.\"\n      sound: \"ENTITY_PLAYER_LEVELUP\"\n```\n\n## Placeholders العداد\n- `%zxcrates_keyall_time%` / `{keyall_time}`\n- `%zxcrates_keyall_time_<id>%` / `{keyall_time_<id>}`\n- `%zxcrates_keyall_default%` / `{keyall_default}`\n\nالعداد يظهر بصيغة `MM:SS`.\n\nالأمر `keyall <id>` يقبل ID لتعريف KeyAll أو ID لـCrate موجود. عند استخدام Crate ID يتم توزيع مفتاح واحد مباشرةً على كل اللاعبين Online دون انتظار المؤقت."
+      },
+      "group": {
+        "en": "Reference",
+        "ar": "المرجع"
+      },
+      "order": 13
+    },
+    {
+      "id": "editor",
+      "title": {
+        "en": "GUI Editor",
+        "ar": "محرر الـGUI"
+      },
+      "body": {
+        "en": "Explains the in-game crate editor.\n\nThe source includes dedicated menus for crate management, rewards, reward editing, key settings and previews.\n\n## Editor flow\n- `/crates editor` opens the crate list.\n- `/crate editor <id>` opens the selected crate.\n- Changes are saved automatically; there are no Save buttons.\n- The crate editor supports basic properties, display block, key settings, hologram settings, animation selection and rewards.\n\n## Display Block\nThe editor can accept a block item from the player's inventory, cursor or main hand. The item is not consumed.\n\n## Rewards\nThe reward menu supports pagination, reward selection, editing and importing item stacks. README notes that rewards can be imported from the complete main inventory + hotbar in visual order while excluding armor and off-hand, and can also be copied with click/drag into a selected reward slot.\n\n## Preview / opening UI\nGUI titles are prefixed with `§8`. The README specifies `§8ZxCrates Editor` for the editor and `§8Crate Preview` for the preview. Opening uses an `Open Crate` title with an `§8` prefix.",
+        "ar": "يوضح محرر الصناديق داخل اللعبة.\n\nيحتوي المصدر على Menus مخصصة لإدارة الـCrates والجوائز وتحرير الجائزة وإعدادات المفاتيح والمعاينة.\n\n## مسار المحرر\n- `/crates editor` يفتح قائمة الـCrates.\n- `/crate editor <id>` يفتح الـCrate المحدد.\n- التعديلات تحفظ تلقائيًا ولا توجد أزرار Save.\n- يدعم المحرر الخصائص الأساسية وDisplay Block وإعدادات المفتاح والهولوجرام واختيار Animation والجوائز.\n\n## Display Block\nيمكن اختيار Block من Inventory اللاعب أو Cursor أو Main Hand، ولا يتم استهلاك العنصر.\n\n## الجوائز\nيدعم Reward Menu Pagination واختيار الجائزة وتعديلها واستيراد ItemStacks. ويذكر README أن الاستيراد يأخذ الـMain Inventory + Hotbar بالترتيب البصري مع استثناء Armor وOff-hand، كما يمكن نسخ العنصر بالـClick/Drag إلى Slot الجائزة.\n\n## المعاينة وواجهة الفتح\nجميع عناوين الـGUI تبدأ بـ`§8`. ووفق README عناوين المحرر والمعاينة هي `§8ZxCrates Editor` و`§8Crate Preview`، بينما شاشة الفتح تستخدم `Open Crate` مع بادئة `§8`."
+      },
+      "group": {
+        "en": "Reference",
+        "ar": "المرجع"
+      },
+      "order": 14
+    },
+    {
+      "id": "examples",
+      "title": {
+        "en": "Examples",
+        "ar": "أمثلة"
+      },
+      "body": {
+        "en": "Practical examples for quick understanding and use.\n\n```yaml\nid: common\ndisplay-name: \"&aCommon Crate\"\ntype: random\nblock-material: CHEST\nanimation: galaxy\n\nkey:\n  create: true\n  delivery: cloud\n  display-name: \"&#FFD54AZxCrates Key\"\n  stacked: true\n\nopen-permission: \"\"\ncooldown-seconds: 1\nbroadcast-win: false\nslots: 45\n\nhologram:\n  enabled: true\n  offset-y: 1.2\n  background: false\n  view-distance: 32\n\nitem-lore:\n  - ''\n  - '&8&m----------------'\n  - '&fᴄʜᴀɴᴄᴇ: &e%reward_chance%'\n  - '&fᴋᴇʏѕ: &e%zxcrates_crate_keys%'\n  - '&8&m----------------'\n\nlocations: []\n\nrewards:\n  0:\n    id: 1\n    chance: 50.0\n    type: give_item\n    amount: 16\n    commands: []\n    item: \"\"\n  1:\n    id: 2\n    chance: 30.0\n    type: mixed\n    amount: 1\n    commands:\n      - \"[console] give {player} diamond 3\"\n    item: \"\"\n```\n\n## Item-lore behavior\nThe configured crate `item-lore` is applied temporarily in previews/opening/animation displays. It does not permanently merge into the reward's stored ItemStack, so the player receives the original reward lore.",
+        "ar": "أمثلة عملية جاهزة للفهم والتطبيق السريع.\n\n```yaml\nid: common\ndisplay-name: \"&aCommon Crate\"\ntype: random\nblock-material: CHEST\nanimation: galaxy\n\nkey:\n  create: true\n  delivery: cloud\n  display-name: \"&#FFD54AZxCrates Key\"\n  stacked: true\n\nopen-permission: \"\"\ncooldown-seconds: 1\nbroadcast-win: false\nslots: 45\n\nhologram:\n  enabled: true\n  offset-y: 1.2\n  background: false\n  view-distance: 32\n\nitem-lore:\n  - ''\n  - '&8&m----------------'\n  - '&fᴄʜᴀɴᴄᴇ: &e%reward_chance%'\n  - '&fᴋᴇʏѕ: &e%zxcrates_crate_keys%'\n  - '&8&m----------------'\n\nlocations: []\n\nrewards:\n  0:\n    id: 1\n    chance: 50.0\n    type: give_item\n    amount: 16\n    commands: []\n    item: \"\"\n  1:\n    id: 2\n    chance: 30.0\n    type: mixed\n    amount: 1\n    commands:\n      - \"[console] give {player} diamond 3\"\n    item: \"\"\n```\n\n## سلوك item-lore\nيتم تطبيق `item-lore` الخاص بالكريت بشكل مؤقت داخل المعاينة والفتح والأنيميشن. لا يتم دمجه دائمًا داخل الـItemStack المخزن، لذلك يستلم اللاعب Lore الأصلي للجائزة."
+      },
+      "group": {
+        "en": "Reference",
+        "ar": "المرجع"
+      },
+      "order": 15
+    },
+    {
+      "id": "troubleshooting",
+      "title": {
+        "en": "Troubleshooting",
+        "ar": "حل المشاكل"
+      },
+      "body": {
+        "en": "Quick fixes for common plugin issues.\n\n## “Crate not found”\nCheck that the crate ID matches the YAML filename/data and that the crate was loaded successfully. `/zxcrates reload` reloads the configuration, crate files and keyall.yml.\n\n## Player cannot open\nCheck `ZxCrates.open`, the crate's `open-permission`, available keys and cooldown.\n\n## Hologram invisible\nCheck `hologram.enabled`, `view-distance`, the stored block location and PlaceholderAPI availability for PAPI-only values. A view distance of `0` intentionally hides the hologram.\n\n## Hologram duplicate/orphan concern\nThe source manager is designed to reuse displays and includes cleanup logic for displays belonging to removed crates.\n\n## Opening stuck / “opening already in progress”\nThe animation path has a one-at-a-time guard plus cleanup routes for normal completion, inventory close, player quit and errors. If a live server still shows a stuck state, capture the exact console stack trace and the plugin version before changing state data.\n\n## Wrong reward chance\nRemember that chance is a direct percentage, not a weight. Manual chances must not exceed `100`; remaining percentage is allocated to automatic rewards.",
+        "ar": "حلول مختصرة لأكثر المشاكل شيوعًا.\n\n## “Crate not found”\nتحقق من أن ID يطابق اسم/بيانات ملف YAML وأن الـCrate تم تحميله بنجاح. الأمر `/zxcrates reload` يعيد تحميل config وملفات Crates وkeyall.yml.\n\n## اللاعب لا يستطيع الفتح\nتحقق من `ZxCrates.open` و`open-permission` الخاص بالكريت ووجود المفاتيح وCooldown.\n\n## الهولوجرام غير ظاهر\nافحص `hologram.enabled` و`view-distance` وموقع البلوك المحفوظ، وتأكد من وجود PlaceholderAPI إذا كان النص يستخدم PAPI. القيمة `0` تخفي الهولوجرام عمدًا.\n\n## مشكلة Duplicate/Orphan في الهولوجرام\nالمصدر مصمم لإعادة استخدام الـDisplays ويحتوي على تنظيف للكيانات المرتبطة بالكريتات المحذوفة.\n\n## الفتح عالق / “opening already in progress”\nمسار الأنيميشن يحتوي على one-at-a-time guard وتنظيف عند Completion وInventory Close وPlayer Quit والأخطاء. إذا ظهرت الحالة عالقة على Live Server، خذ الـstack trace الكامل والإصدار قبل تعديل البيانات يدويًا.\n\n## Chance غير صحيح\nتذكر أن Chance نسبة مباشرة وليست Weight. مجموع Manual يجب ألا يتجاوز `100`، والنسبة المتبقية تُوزع على الجوائز Automatic."
+      },
+      "group": {
+        "en": "Support",
+        "ar": "الدعم"
+      },
+      "order": 16
+    }
+  ]
+}

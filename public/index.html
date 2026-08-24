@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#10182a" />
+  <meta name="description" content="ZxStudio — a Minecraft plugin publishing and documentation hub." />
+  <title>ZxStudio — Plugin Studio & Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="snow-layer" id="snowLayer" aria-hidden="true"></div>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#/"><span class="brand-mark">Z</span><span>ZxStudio</span><small>PLUGIN LAB</small></a>
+    <nav class="main-nav">
+      <a href="#/" data-i18n="nav.home">Home</a>
+      <a href="#/projects" data-i18n="nav.projects">Projects</a>
+    </nav>
+    <div class="top-actions">
+      <div class="theme-wrap" id="themeWrap">
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="تغيير الألوان" title="تغيير الألوان">
+          <span class="theme-btn-dot" id="themeBtnDot"></span>
+          <svg class="theme-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="theme-dropdown" id="themeDropdown" role="menu" aria-label="Themes">
+          <button class="theme-dot active" data-theme="red" style="background:linear-gradient(135deg,#FF0000,#C30000,#FF0000)" title="أحمر" aria-label="أحمر"></button>
+          <button class="theme-dot" data-theme="blue" style="background:linear-gradient(135deg,#1D4ED8,#7C3AED,#1D4ED8)" title="أزرق" aria-label="أزرق"></button>
+          <button class="theme-dot" data-theme="purple" style="background:linear-gradient(135deg,#6D28D9,#A78BFA,#6D28D9)" title="بنفسجي" aria-label="بنفسجي"></button>
+          <button class="theme-dot" data-theme="green" style="background:linear-gradient(135deg,#059669,#22C55E,#059669)" title="أخضر" aria-label="أخضر"></button>
+          <button class="theme-dot" data-theme="orange" style="background:linear-gradient(135deg,#EA580C,#FBBF24,#EA580C)" title="برتقالي" aria-label="برتقالي"></button>
+          <button class="theme-dot" data-theme="cyan" style="background:linear-gradient(135deg,#0E7490,#22D3EE,#0E7490)" title="سماوي" aria-label="سماوي"></button>
+          <button class="theme-dot" data-theme="pink" style="background:linear-gradient(135deg,#BE185D,#F472B6,#BE185D)" title="وردي" aria-label="وردي"></button>
+        </div>
+      </div>
+      <button class="ghost-btn" id="langBtn" type="button">العربية</button>
+      <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <div><span class="brand-mark mini">Z</span> ZxStudio</div>
+    <div data-i18n="footer">Built for modern Minecraft plugin development.</div>
+    <div>© <span id="year"></span> ZxStudio</div>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="searchModal">
+    <div class="search-modal glass">
+      <div class="modal-head"><strong data-i18n="search.title">Search ZxStudio</strong><button class="icon-btn" id="closeSearch">×</button></div>
+      <input id="searchInput" class="search-input" placeholder="Search projects, wiki, commands..." />
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
